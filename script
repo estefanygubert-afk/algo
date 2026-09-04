@@ -1,0 +1,42 @@
+const botoes = document.querySelectorAll(".botao-reacao");
+const botaoTema = document.querySelector(".btn-tema-escuro");
+
+// =========================
+// SISTEMA DE LIKES
+// =========================
+
+botoes.forEach(function (botao) {
+
+    let curtiu = false;
+
+    botao.addEventListener("click", botaoClicado);
+
+    function botaoClicado() {
+
+        let texto = botao.querySelector("span");
+
+        if (curtiu === false) {
+            texto.textContent++;
+            curtiu = true;
+        } else {
+            texto.textContent--;
+            curtiu = false;
+        }
+    }
+});
+
+
+// =========================
+// TROCA DE TEMA
+// =========================
+
+botaoTema.addEventListener("click", function () {
+
+    document.body.classList.toggle("tema-escuro");
+
+    if (document.body.classList.contains("tema-escuro")) {
+        botaoTema.textContent = "☀️ Tema claro";
+    } else {
+        botaoTema.textContent = "🌙 Tema escuro";
+    }
+});
